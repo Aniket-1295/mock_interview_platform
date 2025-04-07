@@ -1,3 +1,5 @@
+//common layout for all auth pagrs
+
 import { ReactNode } from "react";
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {

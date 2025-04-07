@@ -20,7 +20,10 @@ import FormField from "./FormField";
     return z.object({
       name: type === "sign-up" ? z.string().min(3) : z.string().optional(),
       email: z.string().email(),
-      password: z.string().min(3),
+      password: z.string().min(6).max(20).regex(
+        /^(?=.*[A-Z])(?=.*\d).{6,20}$/,
+        "Password must be 6-20 characters long and include at least one uppercase letter and one number"
+      ),
     });
   };
 
