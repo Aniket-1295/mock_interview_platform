@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -84,7 +84,7 @@ const Agent = ({ userName, userId, type,interviewId,questions, feedbackId, }: Ag
     }
 
     const handleGenerateFeedback = async (messages :SavedMessage[])=>{
-      console.log("generate feed back");
+      // console.log("generate feed back");
 
       const { success, feedbackId: id } = await createFeedback({
         interviewId: interviewId!,
