@@ -28,7 +28,7 @@ const InterviewCard = ({
       Technical: "bg-light-800",
     }[normalizedType] || "bg-light-600";
 
-    const formattedDate = dayjs( Date.now()).format("MMM D, YYYY");
+    const formattedDate = dayjs(Date.now()).format("MMM D, YYYY");
 
 
   return (
