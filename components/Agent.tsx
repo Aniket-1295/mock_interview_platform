@@ -108,7 +108,7 @@ const Agent = ({ userName, userId, type,interviewId,questions, feedbackId, }: Ag
         handleGenerateFeedback(messages);
       }
     }
-  }, [messages, callStatus, type, userId,]);
+  }, [messages, callStatus, type, userId,feedbackId,interviewId,router]);
 
   const habdleCall = async () => {
     setCallStatus(CallStatus.CONNECTING);
@@ -141,10 +141,10 @@ const Agent = ({ userName, userId, type,interviewId,questions, feedbackId, }: Ag
     vapi.stop();
   };
 
-  const latestMessage = messages[messages.length - 1]?.content;
+  // const latestMessage = messages[messages.length - 1]?.content;
 
-  const isCallINactiveOrFinished =
-    callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED;
+  // const isCallINactiveOrFinished =
+  //   callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED;
 
   return (
     <>
@@ -181,13 +181,13 @@ const Agent = ({ userName, userId, type,interviewId,questions, feedbackId, }: Ag
         <div className="transcript-border">
           <div className="transcript">
             <p
-              key={latestMessage}
+              key={lastMessage}
               className={cn(
                 "transition-opacity duration-500 opacity-0",
                 "animate-fadeIn opacity-100"
               )}
             >
-              {latestMessage}
+              {lastMessage}
             </p>
           </div>
         </div>
@@ -204,7 +204,8 @@ const Agent = ({ userName, userId, type,interviewId,questions, feedbackId, }: Ag
             />
 
             <span className="relative">
-              {isCallINactiveOrFinished ? 'call'
+            {callStatus === "INACTIVE" || callStatus === "FINISHED"
+                ? "Call"
                 : ". . ."}
             </span>
           </button>
